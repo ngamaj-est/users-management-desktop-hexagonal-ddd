@@ -1,13 +1,13 @@
 -- =============================================
 -- Script de creación de la base de datos
--- Gestión de Usuarios - Arquitectura Hexagonal
+-- Gestión de Usuarios Y Especies de Zoologico - Arquitectura Hexagonal
 -- =============================================
 
-CREATE DATABASE IF NOT EXISTS crud_usuarios
+CREATE DATABASE IF NOT EXISTS crud_usuarios_y_especies
     CHARACTER SET utf8mb4
     COLLATE utf8mb4_unicode_ci;
 
-USE crud_usuarios;
+USE crud_usuarios_y_especies;
 
 CREATE TABLE IF NOT EXISTS users (
     id          VARCHAR(36)  NOT NULL PRIMARY KEY,
@@ -30,4 +30,22 @@ VALUES (
     'ADMIN',
     'ACTIVE'
 );
+
+-- Tabla de especies del zoológico -- 
+CREATE TABLE IF NOT EXISTS species (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    spanish_name VARCHAR(100) NOT NULL,
+    scientific_name VARCHAR(150) NOT NULL UNIQUE,
+    description TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+-- test data for species -- 
+INSERT INTO species (spanish_name, scientific_name, description) VALUES
+('León', 'Panthera leo', 'Gran felino africano, conocido como el rey de la selva'),
+('Elefante Africano', 'Loxodonta africana', 'El mamífero terrestre más grande de África'),
+('Jirafa', 'Giraffa camelopardalis', 'El animal más alto del planeta'),
+('Tigre de Bengala', 'Panthera tigris tigris', 'Felino rayado originario de la India'),
+('Pingüino Rey', 'Aptenodytes patagonicus', 'Ave marina no voladora de regiones subantárticas');
 
