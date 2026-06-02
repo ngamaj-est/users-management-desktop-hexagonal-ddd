@@ -14,6 +14,11 @@ public enum MenuOption {
   UPDATE_USER(4, "Update user"),
   DELETE_USER(5, "Delete user"),
   LOGIN(6, "Login"),
+  LIST_ESPECIES(7, "List all species"),
+  FIND_ESPECIE(8, "Find species by ID"),
+  CREATE_ESPECIE(9, "Create species"),
+  UPDATE_ESPECIE(10, "Update species"),
+  DELETE_ESPECIE(11, "Delete species"),
   EXIT(0, "Exit");
 
   private final int number;
