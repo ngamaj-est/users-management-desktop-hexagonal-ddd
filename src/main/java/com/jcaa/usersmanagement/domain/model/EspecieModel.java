@@ -1,5 +1,6 @@
 package com.jcaa.usersmanagement.domain.model;
 
+import com.jcaa.usersmanagement.domain.enums.HabitatEnum;
 import com.jcaa.usersmanagement.domain.valueobject.EspecieId;
 import com.jcaa.usersmanagement.domain.valueobject.NombreCientifico;
 import com.jcaa.usersmanagement.domain.valueobject.NombreEspecie;
@@ -13,14 +14,14 @@ public class EspecieModel {
     NombreEspecie nombre;
     NombreCientifico nombreCientifico;
     String descripcion;
-    String habitat;
+    HabitatEnum habitat;
 
     public static EspecieModel create(
             final EspecieId id,
             final NombreEspecie nombre,
             final NombreCientifico nombreCientifico,
             final String descripcion,
-            final String habitat) {
+            final HabitatEnum habitat) {
         return new EspecieModel(id, nombre, nombreCientifico, descripcion, habitat);
     }
 }
