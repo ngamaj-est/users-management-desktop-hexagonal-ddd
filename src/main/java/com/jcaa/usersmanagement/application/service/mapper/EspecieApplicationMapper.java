@@ -15,13 +15,15 @@ import lombok.experimental.UtilityClass;
 @UtilityClass
 public class EspecieApplicationMapper {
 
-  public EspecieModel fromCreateCommandToModel(final CreateEspecieCommand command) {
+  public EspecieModel fromCreateCommandToModel(
+      final CreateEspecieCommand command,
+      final EspecieId generatedId) {
     return EspecieModel.create(
-        new EspecieId(command.id()),
+        generatedId,
         new NombreEspecie(command.nombre()),
         new NombreCientifico(command.nombreCientifico()),
         command.descripcion(),
-        HabitatEnum.valueOf(command.habitat()));
+        HabitatEnum.fromString(command.habitat()));
   }
 
   public EspecieModel fromUpdateCommandToModel(final UpdateEspecieCommand command) {
@@ -30,7 +32,7 @@ public class EspecieApplicationMapper {
         new NombreEspecie(command.nombre()),
         new NombreCientifico(command.nombreCientifico()),
         command.descripcion(),
-        HabitatEnum.valueOf(command.habitat()));
+        HabitatEnum.fromString(command.habitat()));
   }
 
   public EspecieId fromGetByIdQueryToEspecieId(final GetEspecieByIdQuery query) {
