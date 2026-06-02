@@ -1,6 +1,7 @@
 package com.jcaa.usersmanagement.application.service;
 
 import java.util.Set;
+import java.util.UUID;
 
 import com.jcaa.usersmanagement.application.port.in.CreateEspecieUseCase;
 import com.jcaa.usersmanagement.application.port.out.GetEspecieByNombreCientificoPort;
@@ -9,6 +10,7 @@ import com.jcaa.usersmanagement.application.service.dto.command.CreateEspecieCom
 import com.jcaa.usersmanagement.application.service.mapper.EspecieApplicationMapper;
 import com.jcaa.usersmanagement.domain.exception.EspecieAlreadyExistsException;
 import com.jcaa.usersmanagement.domain.model.EspecieModel;
+import com.jcaa.usersmanagement.domain.valueobject.EspecieId;
 import com.jcaa.usersmanagement.domain.valueobject.NombreCientifico;
 
 import jakarta.validation.ConstraintViolation;
@@ -32,8 +34,9 @@ public final class CreateEspecieService implements CreateEspecieUseCase {
     final NombreCientifico nombreCientifico = new NombreCientifico(command.nombreCientifico());
     ensureNombreCientificoIsNotTaken(nombreCientifico);
 
-    final EspecieModel especieToSave =
-        EspecieApplicationMapper.fromCreateCommandToModel(command);
+    final EspecieModel especieToSave = EspecieApplicationMapper.fromCreateCommandToModel(
+        command,
+        new EspecieId(UUID.randomUUID().toString()));
     return saveEspeciePort.save(especieToSave);
   }
 

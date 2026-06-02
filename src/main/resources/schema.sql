@@ -32,18 +32,18 @@ VALUES (
 );
 
 -- Tabla de especies del zoológico -- 
-CREATE TABLE IF NOT EXISTS species (
+CREATE TABLE IF NOT EXISTS especie (
     id VARCHAR(36)  NOT NULL PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
-    scientific_name VARCHAR(150) NOT NULL UNIQUE,
-    description TEXT,
+    nombre VARCHAR(100) NOT NULL,
+    nombre_cientifico VARCHAR(150) NOT NULL UNIQUE,
+    descripcion TEXT,
     habitat ENUM('SABANA', 'DESIERTO', 'BOSQUE', 'SELVA') NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
--- test data for species -- 
-INSERT INTO species (id, name, scientific_name, description, habitat) VALUES
+-- test data for especies -- 
+INSERT INTO especie (id, nombre, nombre_cientifico, descripcion, habitat) VALUES
 ('00000000-0000-0000-0000-000000000001', 'León', 'Panthera leo', 'Gran felino africano, conocido como el rey de la selva', 'SABANA'),
 ('00000000-0000-0000-0000-000000000002', 'Elefante Africano', 'Loxodonta africana', 'El mamífero terrestre más grande de África', 'SABANA'),
 ('00000000-0000-0000-0000-000000000003', 'Oragutan', 'Pongo pygmaeus', 'Animal con bastante parecido al ser humano', 'BOSQUE'),

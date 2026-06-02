@@ -17,7 +17,6 @@ public final class EspecieDesktopMapper {
 
   public static CreateEspecieCommand toCreateCommand(final CreateEspecieRequest request) {
     return new CreateEspecieCommand(
-        request.id(),
         request.nombre(),
         request.nombreCientifico(),
         request.descripcion(),

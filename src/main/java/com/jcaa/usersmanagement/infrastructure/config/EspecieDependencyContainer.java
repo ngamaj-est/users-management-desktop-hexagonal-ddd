@@ -14,6 +14,7 @@ import com.jcaa.usersmanagement.application.service.GetEspecieByIdService;
 import com.jcaa.usersmanagement.application.service.UpdateEspecieService;
 import com.jcaa.usersmanagement.infrastructure.adapter.persistence.config.DatabaseConfig;
 import com.jcaa.usersmanagement.infrastructure.adapter.persistence.config.DatabaseConnectionFactory;
+import com.jcaa.usersmanagement.infrastructure.adapter.persistence.config.DatabaseInitializer;
 import com.jcaa.usersmanagement.infrastructure.adapter.persistence.repository.EspecieRepositoryMySQL;
 import com.jcaa.usersmanagement.infrastructure.entrypoint.desktop.controller.EspecieController;
 
@@ -32,6 +33,7 @@ public final class EspecieDependencyContainer {
   public EspecieDependencyContainer() {
     final AppProperties properties = new AppProperties();
     final Connection connection    = buildDatabaseConnection(properties);
+    DatabaseInitializer.initialize(connection);
     final Validator validator      = ValidatorProvider.buildValidator();
 
     final EspecieRepositoryMySQL especieRepository =
